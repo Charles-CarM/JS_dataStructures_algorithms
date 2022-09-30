@@ -71,9 +71,9 @@ function recursiveBinarySearch(array, key) {
 }
 //test
 function verifyRecursiveBinary(result){
-  console.log("Target found: ", result)
+  console.log("Target found at: ", result)
 }
-const numbers = [1,2,3,4,5,6,7,8]
+const numbers = [1,2,3,4,5,6,7,8] 
 const result =  recursiveBinarySearch(numbers, 12)
 verifyRecursiveBinary(result)
 
@@ -81,3 +81,4 @@ const result =  recursiveBinarySearch(numbers, 6)
 verifyRecursiveBinary(result) 
 
 //1:35
+
