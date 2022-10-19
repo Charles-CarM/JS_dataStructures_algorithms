@@ -27,24 +27,62 @@ numbers.unshift()
 
 //Linked List
 class ListNode{
-  constructor(data) {
+  constructor(data, next = null) {
     this.data = data
-    this.next = null
+    this.next = next
   }
 }
 class LinkedList{
-  constructor(head = null) {
-    this.head = head
+  constructor(head) {
+    this.head = null
+    this.size = 0;
+  }
+
+//insert first node
+insertFirst(data) {
+  this.head = new ListNode(data, this.head)
+  this.size++
+}
+//insert last node
+insertLast(data) {
+  let node = new ListNode(data)
+  let current
+
+  //if empty, make head
+  if(!this.head) {
+    this.head = node
+  }else {
+    current = this.head
+
+    while(current.next){
+      current = current.next
+    }
+    current.next = node
   }
 }
-let node1 = new ListNode(2)
-let node2 = new ListNode(5)
-let node3 = new ListNode(7)
-let node4 = new ListNode(11)
-let node5 = new ListNode(13)
-node1.next = node2
+//insert at index
 
-let list = new LinkedList(node1)
+//get at index
 
-console.log(list.head.next.data)
+//remove at index
 
+//clear list
+
+//print list data
+printListData() {
+  let current = this.head
+  while(current) {
+    console.log(current.data)
+    current = current.next
+  }
+}
+
+}
+const ll = new LinkedList()
+
+ll.insertFirst(100)
+ll.insertFirst(200)
+ll.insertFirst(300)
+ll.insertLast(400)
+
+ll.printListData()
