@@ -68,6 +68,18 @@ insertLast(data) {
 
 //clear list
 
+//check size
+checkSize() {
+  let current = this.head
+  let count = 0
+
+  while(current){
+    count += 1
+    current = current.next
+  }
+  return count
+}
+
 //print list data
 printListData() {
   let current = this.head
@@ -86,3 +98,9 @@ ll.insertFirst(300)
 ll.insertLast(400)
 
 ll.printListData()
+
+//2:38
+
+//https://www.youtube.com/watch?v=ZBdE8DElQQU
+
+//14:00
