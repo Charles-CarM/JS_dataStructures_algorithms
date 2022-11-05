@@ -1,73 +1,112 @@
-const newList = [1,2,3]
-const result = newList[0]
-
-if (newList.includes(1)){
-  console.log(true)
-}
-
-for(const items in newList){
-  if(items === 1){
-    console.log(true)
-  }
-}
-
-//add items to an array
-
-//top
-const numbers = []
-console.log(numbers.length)
-numbers.push(2)
-
-//bottom
-const another = []
-numbers.unshift()
-
-//pop & push  removes/adds element from top of the stack
-//shift & unshift removes/adds element from bottom of the stack
-
 //Linked List
-class ListNode{
+class Node{
   constructor(data, next = null) {
     this.data = data
     this.next = next
   }
 }
 class LinkedList{
-  constructor(head) {
+  constructor() {
     this.head = null
     this.size = 0;
   }
 
-//insert first node
+// 1 insert first node
 insertFirst(data) {
-  this.head = new ListNode(data, this.head)
+  this.head = new Node(data, this.head)
   this.size++
 }
-//insert last node
+// 2 insert last node
 insertLast(data) {
-  let node = new ListNode(data)
-  let current
+  let node = new Node(data);
+  let current;
 
   //if empty, make head
   if(!this.head) {
-    this.head = node
+    this.head = node;
   }else {
-    current = this.head
+    current = this.head;
 
     while(current.next){
+      current = current.next;
+    }
+    current.next = node;
+  }
+  this.size++
+}
+// 3 insert at index
+insertAt(data, index) {
+  // if index is out of range
+  if(index > 0 && index > this.size){
+    return;
+  }
+
+  // if first index
+  if(index === 0) {
+    this.insertFirst(data)
+    return;
+  }
+
+  const node = new Node(data)
+  let current, previous;
+  //set current to first
+  current = this.head
+  let count = 0;
+
+  while(count < index) {
+    previous = current; //Node before index
+    count++;
+    current = current.next //Node after index
+  }
+
+  node.next = current
+  previous.next = node
+
+  this.size++
+}
+// 4 get at index
+getAt(index) {
+  let current = this.head;
+  let count  = 0;
+
+  while(current) {
+    if(count == index) {
+      console.log(current.data)
+    }
+    count++
+    current = current.next
+  }
+    return null
+}
+// 5 remove at index
+removeAt(index) {
+  if(index > 0 && index > this.size) {
+    return;
+  }
+
+  let current = this.head
+  let previous
+  let count = 0
+
+  //remove first
+  if(index === 0) {
+    this.head = current.next
+  }else {
+    while(count < index) {
+      count++
+      previous = current
       current = current.next
     }
-    current.next = node
+
+    previous.next = current.next
   }
+  this.size--;
 }
-//insert at index
-
-//get at index
-
-//remove at index
-
-//clear list
-
+// 6 clear list
+clearList() {
+  this.head = null
+  this.size = 0
+}
 //check size
 checkSize() {
   let current = this.head
@@ -80,27 +119,35 @@ checkSize() {
   return count
 }
 
-//print list data
+// 7 print list data
 printListData() {
   let current = this.head
   while(current) {
     console.log(current.data)
     current = current.next
   }
+ } 
 }
 
-}
-const ll = new LinkedList()
+//operations on Linked List
+const link = new LinkedList()
 
-ll.insertFirst(100)
-ll.insertFirst(200)
-ll.insertFirst(300)
-ll.insertLast(400)
+link.insertFirst(100)
+link.insertFirst(200)
+link.insertFirst(300)
+//console.log(linli)
 
-ll.printListData()
+link.insertLast(850)
+//console.log(linli)
 
-//2:38
+link.insertAt(541, 3)
 
-//https://www.youtube.com/watch?v=ZBdE8DElQQU
+link.getAt(3)
 
-//14:00
+link.removeAt(2)
+
+link.clearList()
+
+link.checkSize()
+
+link.printListData()

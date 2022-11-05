@@ -1,4 +1,3 @@
-
 //Linear Search
 function linearSearch(array, key) {
   for(let i =0; i < array.length; i++){
@@ -80,5 +79,4 @@ verifyRecursiveBinary(result)
 const result =  recursiveBinarySearch(numbers, 6)
 verifyRecursiveBinary(result) 
 
-//1:35
 
